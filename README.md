@@ -15,3 +15,5 @@ go get github.com/lukasschwab/optional
 ``` go
 import "github.com/lukasschwab/optional"
 ```
+
+See, e.g., [`met`](https://github.com/lukasschwab/met).
