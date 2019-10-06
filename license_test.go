@@ -36,6 +36,11 @@ func TestLicense(t *testing.T) {
 			return err
 		}
 
+		// Ignore new subdirectories.
+		if strings.Contains(path, "url") {
+			return nil
+		}
+
 		if ext := filepath.Ext(path); ext != ".go" && ext != ".proto" {
 			return nil
 		}
