@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	. "github.com/lukasschwab/optional"
+	o "github.com/lukasschwab/optional/pkg/optional"
 )
 
 // A BoolFormatter transforms a boolean into its (pre-encoding) value in a URL.
@@ -21,9 +21,9 @@ func DefaultBoolFormatter(b bool) string {
 }
 
 // AddBoolToQuery formats and adds optional bool B to query Q iff b is non-nil.
-func AddBoolToQuery(q *url.Values, name string, b Bool, formatter BoolFormatter) {
+func AddBoolToQuery(q *url.Values, name string, b o.Bool, formatter BoolFormatter) {
 	if b != nil {
-		q.Set(name, formatter(ToBool(b)))
+		q.Set(name, formatter(o.ToBool(b)))
 	}
 }
 
@@ -41,9 +41,9 @@ func DefaultDurationFormatter(d time.Duration) string {
 
 // AddDurationToQuery formats and adds optional duration D to query Q iff D is
 // non-nil.
-func AddDurationToQuery(q *url.Values, name string, d Duration, formatter DurationFormatter) {
+func AddDurationToQuery(q *url.Values, name string, d o.Duration, formatter DurationFormatter) {
 	if d != nil {
-		q.Set(name, formatter(ToDuration(d)))
+		q.Set(name, formatter(o.ToDuration(d)))
 	}
 }
 
@@ -57,9 +57,9 @@ func DefaultFloatFormatter(f float64) string {
 
 // AddFloat64ToQuery formats and adds optional float F to query Q iff F is
 // non-nil.
-func AddFloat64ToQuery(q *url.Values, name string, f Float64, formatter FloatFormatter) {
+func AddFloat64ToQuery(q *url.Values, name string, f o.Float64, formatter FloatFormatter) {
 	if f != nil {
-		q.Set(name, formatter(ToFloat64(f)))
+		q.Set(name, formatter(o.ToFloat64(f)))
 	}
 }
 
@@ -72,16 +72,16 @@ func DefaultIntFormatter(i int) string {
 }
 
 // AddIntToQuery formats and adds optional int I to query Q iff I is non-nil.
-func AddIntToQuery(q *url.Values, name string, i Int, formatter IntFormatter) {
+func AddIntToQuery(q *url.Values, name string, i o.Int, formatter IntFormatter) {
 	if i != nil {
-		q.Set(name, formatter(ToInt(i)))
+		q.Set(name, formatter(o.ToInt(i)))
 	}
 }
 
 // AddStringToQuery adds string S to query Q iff S is non-nil.
-func AddStringToQuery(q *url.Values, name string, s String) {
+func AddStringToQuery(q *url.Values, name string, s o.String) {
 	if s != nil {
-		q.Set(name, ToString(s))
+		q.Set(name, o.ToString(s))
 	}
 }
 
@@ -94,9 +94,9 @@ func DefaultUintFormatter(u uint) string {
 }
 
 // AddUintToQuery formats and adds optional uint U to query Q iff U is non-nil.
-func AddUintToQuery(q *url.Values, name string, u Uint, formatter UintFormatter) {
+func AddUintToQuery(q *url.Values, name string, u o.Uint, formatter UintFormatter) {
 	if u != nil {
-		q.Set(name, formatter(ToUint(u)))
+		q.Set(name, formatter(o.ToUint(u)))
 	}
 }
 
